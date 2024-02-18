@@ -12,4 +12,13 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 public class Service {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(nullable = false)
+    private String name;
+    @Column(nullable = false)
+    private int price;
+    @Column(nullable = false)
+    private int capacity;
 }
