@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.Duration;
+import java.time.LocalTime;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,4 +16,14 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 public class Timetable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "service_id")
+    private Service service;
+    @Column(nullable = false)
+    private LocalTime start;
+    @Column(nullable = false)
+    private Duration duration;
 }
