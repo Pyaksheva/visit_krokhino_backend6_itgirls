@@ -6,10 +6,42 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Getter
 @Entity
 public class Booking {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(nullable = false, name="reservation_status")
+    private ReservationStatus reservationStatus;
+    @Column(nullable = false, name="customer_name")
+    private String customerName;
+    @Column(nullable = false, name="customer_surname")
+    private String customerSurname;
+    @Column(nullable = false, name="customer_email")
+    private String customerEmail;
+    @Column(nullable = false, name="customer_phone")
+    private String customerPhone;
+    @Column(nullable = false, name="service_id")
+    private Service service;
+    @Column(nullable = false, name="guest_number")
+    private int guestNumber;
+    @Column(nullable = false, name="start_dttm")
+    private LocalDateTime startDateTime;
+    @Column(nullable = false, name="end_dttm")
+    private LocalDateTime endDateTime;
+    @Column(nullable = false, name="total_price")
+    private int totalPrice;
+    @ManyToMany
+    @JoinTable(name = "booking_extra_service",
+            joinColumns = @JoinColumn(name = "booking_id"),
+            inverseJoinColumns = @JoinColumn(name = "extra_service_id"))
+    private List<ExtraService> extraServiceList;
 }
