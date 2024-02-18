@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -19,4 +21,9 @@ public class ExtraService {
     private String name;
     @Column(nullable = false)
     private int price;
+    @ManyToMany
+    @JoinTable(name = "booking_extra_service",
+            joinColumns = @JoinColumn(name = "extra_service_id"),
+            inverseJoinColumns = @JoinColumn(name = "booking_id"))
+    private List<Booking> bookingList;
 }
