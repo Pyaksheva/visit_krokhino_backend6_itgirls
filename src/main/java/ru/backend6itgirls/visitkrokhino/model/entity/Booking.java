@@ -28,8 +28,9 @@ public class Booking {
     @Column(nullable = false, name="customer_email")
     private String customerEmail;
     @Column(nullable = false, name="customer_phone")
-    private String customerPhone;
-    @Column(nullable = false, name="service_id")
+    private int customerPhone;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "service_id")
     private Service service;
     @Column(nullable = false, name="guest_number")
     private int guestNumber;

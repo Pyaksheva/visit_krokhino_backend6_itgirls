@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -21,4 +23,8 @@ public class Service {
     private int price;
     @Column(nullable = false)
     private int capacity;
+    @JoinTable(name = "service_extra_service",
+            joinColumns = @JoinColumn(name = "service_id"),
+            inverseJoinColumns = @JoinColumn(name = "extra_service_id"))
+    private List<ExtraService> extraServiceList;
 }
