@@ -15,6 +15,7 @@ import java.time.LocalTime;
 @Builder
 @Getter
 @Entity
+@Table(name = "timetable")
 public class Timetable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
