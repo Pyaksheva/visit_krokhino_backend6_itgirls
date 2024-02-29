@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="rename tables" author="Pyaksheva">
+        <sql>
+            ALTER TABLE service
+            RENAME TO main_category;
+
+            ALTER TABLE extra_service
+            RENAME TO extra_category;
+
+            ALTER TABLE booking_extra_service
+            RENAME TO booking_extra_category;
+
+            ALTER TABLE service_extra_service
+            RENAME TO main_category_extra_category;
+
+            ALTER TABLE booking
+            RENAME COLUMN service_id TO main_category_id;
+
+            ALTER TABLE booking_extra_category
+            RENAME COLUMN extra_service_id TO extra_category_id;
+
+            ALTER TABLE main_category_extra_category
+            RENAME COLUMN service_id TO main_category_id;
+
+            ALTER TABLE main_category_extra_category
+            RENAME COLUMN extra_service_id TO extra_category_id;
+
+            ALTER TABLE timetable
+            RENAME COLUMN service_id TO main_category_id;
+
+        </sql>
+    </changeSet>
+</databaseChangeLog>
