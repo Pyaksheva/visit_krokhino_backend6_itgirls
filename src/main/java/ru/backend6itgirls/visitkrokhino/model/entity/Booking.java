@@ -30,8 +30,8 @@ public class Booking {
     @Column(nullable = false, name = "customer_phone")
     private int customerPhone;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "service_id")
-    private Service service;
+    @JoinColumn(name = "main_category_id")
+    private MainCategory mainCategory;
     @Column(nullable = false, name = "guest_number")
     private int guestNumber;
     @Column(nullable = false, name = "start_dttm")
@@ -41,8 +41,8 @@ public class Booking {
     @Column(nullable = false, name = "total_price")
     private int totalPrice;
     @ManyToMany
-    @JoinTable(name = "booking_extra_service",
+    @JoinTable(name = "booking_extra_category",
             joinColumns = @JoinColumn(name = "booking_id"),
-            inverseJoinColumns = @JoinColumn(name = "extra_service_id"))
-    private List<ExtraService> extraServiceList;
+            inverseJoinColumns = @JoinColumn(name = "extra_category_id"))
+    private List<ExtraCategory> extraCategoryList;
 }
