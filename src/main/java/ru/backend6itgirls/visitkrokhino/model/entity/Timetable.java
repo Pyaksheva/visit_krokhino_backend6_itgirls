@@ -21,8 +21,8 @@ public class Timetable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "service_id")
-    private Service service;
+    @JoinColumn(name = "main_category_id")
+    private MainCategory mainCategory;
     @Column(nullable = false)
     private LocalTime start;
     @Column(nullable = false)

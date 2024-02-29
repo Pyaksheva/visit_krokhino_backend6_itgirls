@@ -13,8 +13,8 @@ import java.util.List;
 @Builder
 @Getter
 @Entity
-@Table(name = "extra_service")
-public class ExtraService {
+@Table(name = "extra_category")
+public class ExtraCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,13 +23,13 @@ public class ExtraService {
     @Column(nullable = false)
     private int price;
     @ManyToMany
-    @JoinTable(name = "booking_extra_service",
-            joinColumns = @JoinColumn(name = "extra_service_id"),
+    @JoinTable(name = "booking_extra_category",
+            joinColumns = @JoinColumn(name = "extra_category_id"),
             inverseJoinColumns = @JoinColumn(name = "booking_id"))
     private List<Booking> bookingList;
     @ManyToMany
-    @JoinTable(name = "service_extra_service",
-            inverseJoinColumns = @JoinColumn(name = "service_id", referencedColumnName = "id"),
-            joinColumns = @JoinColumn(name = "extra_service_id", referencedColumnName = "id"))
-    private List<Service> serviceList;
+    @JoinTable(name = "main_category_extra_category",
+            inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id"),
+            joinColumns = @JoinColumn(name = "extra_category_id", referencedColumnName = "id"))
+    private List<MainCategory> mainCategoryList;
 }

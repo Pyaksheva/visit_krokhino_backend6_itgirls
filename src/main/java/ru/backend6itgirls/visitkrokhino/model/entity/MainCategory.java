@@ -13,8 +13,8 @@ import java.util.List;
 @Builder
 @Getter
 @Entity
-@Table(name = "service")
-public class Service {
+@Table(name = "main_category")
+public class MainCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,8 +25,8 @@ public class Service {
     @Column(nullable = false)
     private int capacity;
     @ManyToMany
-    @JoinTable(name = "service_extra_service",
-            joinColumns = @JoinColumn(name = "service_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "extra_service_id", referencedColumnName = "id"))
-    private List<ExtraService> extraServiceList;
+    @JoinTable(name = "main_category_extra_category",
+            joinColumns = @JoinColumn(name = "main_category_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "extra_category_id", referencedColumnName = "id"))
+    private List<ExtraCategory> extraCategoryList;
 }
