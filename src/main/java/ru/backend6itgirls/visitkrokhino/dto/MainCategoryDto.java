@@ -15,4 +15,5 @@ public class MainCategoryDto {
     private Long id;
     private String name;
     private int price;
+    private List <ExtraCategoryDto> extraCategories;
 }
